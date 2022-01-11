@@ -1,0 +1,18 @@
+svg{
+    position: relative;
+    transform: rotate(
+        -90deg);        
+}
+
+svg text{
+    position: absolute;
+}
+
+/* .svg-circle-bg {
+    fill: #fff;
+} */
+  
+.svg-circle {
+    fill: white;
+    stroke-linecap: round;
+}
