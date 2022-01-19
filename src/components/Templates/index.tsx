@@ -1,16 +1,17 @@
 import React, { ReactNode, useState } from "react";
 // import Loading from "../Loading";
 import { Calendar, Menu, Timer } from "../../assets/Icons";
-import MenuButton from "../Menus/MenuButton";
-import MenuTop from "../Menus/MenuTop";
+import MenuButton from "../React/Menus/MenuButton";
+import MenuTop from "../React/Menus/MenuTop";
 import { Container, FlexContent, Main } from "./style";
 
-interface layoutProps {
+export interface layoutProps {
   children: ReactNode
 }
 
 const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
   const [isMenuActive, setMenuActive] = useState(false);
+
   function click() {
     console.log("oi");
   }

@@ -1,9 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Json from "./data.json";
+import React, { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { Api } from "../../services/api";
 import { Main } from "./styles";
 
+interface UserScoreProps {
+    id: number
+    active: boolean
+    created_at: string
+    day: number
+    deleted_at: string
+    exit: string
+    extra: string
+    input: string
+    lunch_entree: string
+    month: number
+    out_lunch: string
+    status: string
+    year: string
+    request_id: string
+    users_id: string
+}
+
 const Calendar: React.FC = () => {
-    const [date, setDate] = useState(new Date())
+    const [userData, setUserData] = useState<Array<UserScoreProps> | null>(null)
+    const [date] = useState(new Date())
     const [months] = useState(['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'])
     const [weekDays] = useState(['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'])
     const yearCurrent = date.getFullYear()
@@ -11,8 +31,10 @@ const Calendar: React.FC = () => {
     const today = date.getDate()
     const dayOfWeekToday = dayOfWeek(yearCurrent, monthCurrent, today)
     const daysCurrentMonth = daysOfMonth(yearCurrent, monthCurrent)
-    const [userData] = useState(Json.data)
     const ElementActive = React.useRef<HTMLLIElement>(null);
+    const { user } = useAuth()
+    const toast = useRef(null);
+
 
     function daysOfMonth(year: number, month: number) {
         let date = new Date(year, month, 0)
@@ -41,7 +63,22 @@ const Calendar: React.FC = () => {
     }
 
     useEffect(() => {
-        ElementActive.current?.scrollIntoView({ behavior: 'smooth', block: "center" })
+        document.getElementsByClassName("day-marck active")[0].scrollIntoView({ behavior: 'smooth', block: "center" })
+
+        async function loadData() {
+            try {
+                let response = await Api.get("/scoreMonth/" + user?.id, { data: { month: 1, year: 2022 } });
+
+                response.data && setUserData(response.data)
+
+                console.log(userData);
+
+            } catch (e) {
+                return null
+            }
+        }
+
+        loadData()
     }, [])
 
 
@@ -50,67 +87,51 @@ const Calendar: React.FC = () => {
         let listDays: Array<any> = []
         for (let i = 1; i <= daysCurrentMonth; i++) {
             let semana = dayOfWeek(yearCurrent, monthCurrent, i)
-            let array: any = userData.find(Element => Element.dia === i)
+            let array: any = userData?.find(Element => Element.day === i)
 
             listDays.push(
-                i === today ?
-                    <li ref={ElementActive} key={i}>
-                        <div className="day-marck active">
-                            <p className="day-title">{semana}</p>
-                            <span className="day-circle">{i}</span>
-                        </div>
-                        <div className="day-info">
-                            <div className="day-body">
+                <li key={i}>
+                    <div className={i === today ? "day-marck active" : "day-marck"}>
+                        <p className="day-title">{semana}</p>
+                        <span className="day-circle">{i}</span>
+                    </div>
+                    <div className="day-info">
+                        {
+                            array ? (
+                                <>
+                                    <div className="day-body">
+                                        <div>
+                                            <p>{array?.entrada1}</p>
+                                            <span>Entrada</span>
+                                        </div>
+                                        <div>
+                                            <p>{array?.saida1}</p>
+                                            <span>Saida</span>
+                                        </div>
+                                    </div>
+                                    <div className="day-body">
+                                        <div>
+                                            <p>{array?.entrada2}</p>
+                                            <span>Entrada</span>
+                                        </div>
+                                        <div>
+                                            <p>{array?.saida2}</p>
+                                            <span>Saida</span>
+                                        </div>
+                                    </div>
+                                </>
+                            ) :
                                 <div>
-                                    <p>{array?.entrada1}</p>
-                                    <span>Entrada</span>
+                                    <div className="day-body">
+                                        <p>nothing</p>
+                                    </div>
+
                                 </div>
-                                <div>
-                                    <p>{array?.saida1}</p>
-                                    <span>Saida</span>
-                                </div>
-                            </div>
-                            <div className="day-body">
-                                <div>
-                                    <p>{array?.entrada2}</p>
-                                    <span>Entrada</span>
-                                </div>
-                                <div>
-                                    <p>{array?.saida2}</p>
-                                    <span>Saida</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    :
-                    <li key={i}>
-                        <div className="day-marck">
-                            <p className="day-title">{semana}</p>
-                            <span className="day-circle">{i}</span>
-                        </div>
-                        <div className="day-info">
-                            <div className="day-body">
-                                <div>
-                                    <p>{array?.entrada1}</p>
-                                    <span>Entrada</span>
-                                </div>
-                                <div>
-                                    <p>{array?.saida1}</p>
-                                    <span>Saida</span>
-                                </div>
-                            </div>
-                            <div className="day-body">
-                                <div>
-                                    <p>{array?.entrada2}</p>
-                                    <span>Entrada</span>
-                                </div>
-                                <div>
-                                    <p>{array?.saida2}</p>
-                                    <span>Saida</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        }
+
+                    </div>
+                </li>
+
             )
         }
         return (

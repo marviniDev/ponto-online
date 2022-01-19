@@ -1,13 +1,14 @@
 import React from "react";
 import 'typeface-roboto';
-import Routes from "./routes";
+import { AuthProvider } from "./contexts/AuthContext";
+import AppRoutes from "./routes/app.routes";
 import GlobalStyles from "./styles/global";
 
 const App: React.FC = () => (
-  <>
-    <Routes />
+  <AuthProvider>
+    <AppRoutes />
     <GlobalStyles />
-  </>
+  </AuthProvider>
 )
 
 export default App;
