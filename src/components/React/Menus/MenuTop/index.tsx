@@ -1,5 +1,5 @@
 import React, { ReactElement, ReactNode } from "react";
-import { TopBar } from "./styles";
+import { MenuTopContainer } from "./styles";
 
 interface MenuTopProps {
     children?: ReactNode,
@@ -13,11 +13,9 @@ interface MenuTopProps {
 
 const MenuTop: React.FC<MenuTopProps> = (props): JSX.Element => {
     return (
-        <TopBar>
-            {
-                props.body && props.body
-            }
-        </TopBar>
+        <MenuTopContainer>
+            {props.body || props.children}
+        </MenuTopContainer>
     )
 }
 

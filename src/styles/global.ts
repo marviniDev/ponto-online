@@ -40,5 +40,6 @@ svg{
 
 button{
     cursor: pointer;
+    border: none;
 }
 `;

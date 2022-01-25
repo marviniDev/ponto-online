@@ -11,6 +11,7 @@ export const Main = styled.ul`
     display: flex;
     padding: 0em .5em;
     margin-bottom: 1em;
+    
 
     .day-marck{
         display: flex;
@@ -28,11 +29,12 @@ export const Main = styled.ul`
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 100%;
             text-align: center;
             background-color: #ccc;
+            font-weight: 500;
         }
     }
 
@@ -47,12 +49,29 @@ export const Main = styled.ul`
 
     .day-info{
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
         background-color: #fff;
-        padding: .5em;
+        padding: .5em 1em;
         border-radius: 1em;
         gap: 1em;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        position: relative;
+
+        button{
+            position: absolute;
+            right: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            text-align: center;
+            background-color: var(--cor-main);
+            font-weight: 500;
+        }
 
         .day-status{
             display: flex;
@@ -64,11 +83,38 @@ export const Main = styled.ul`
             border-radius: 100%;
         }
 
+        .day-body-flex{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5em;
+            width: 100%;
+        }
+
         .day-body{
             display: flex;
             flex-direction: column;
             gap: 1em;
-            margin-bottom: .5em;
+
+            .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                padding-left: .3em;
+            }
+
+            .card.sucess {
+                border-radius: 0.3em;
+                border-left: 5px solid #0db868;
+
+            }
+
+            .card.failed {
+                border-radius: 0.3em;
+                border-left: 5px solid #e25252;
+            }
         }
     }
     }

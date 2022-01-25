@@ -1,7 +1,9 @@
 import React, { ReactNode, useState } from "react";
+import { useLocation } from "react-router-dom";
 // import Loading from "../Loading";
 import { Calendar, Menu, Timer } from "../../assets/Icons";
 import MenuButton from "../React/Menus/MenuButton";
+import MenuLeft from "../React/Menus/MenuLeft";
 import MenuTop from "../React/Menus/MenuTop";
 import { Container, FlexContent, Main } from "./style";
 
@@ -11,6 +13,7 @@ export interface layoutProps {
 
 const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
   const [isMenuActive, setMenuActive] = useState(false);
+  const location = useLocation()
 
   function click() {
     console.log("oi");
@@ -41,7 +44,8 @@ const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
   return (
     <>
       <Container>
-        <MenuTop />
+        <MenuLeft />
+        <MenuTop body={location.pathname}>oi</MenuTop>
         <FlexContent>
           <Main>
             {children}

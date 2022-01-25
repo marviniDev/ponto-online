@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }: any) => {
   async function signIn(name: string, password: string) {
     const response = await Api.post("\auth", { name: name, password: password })
 
-    if (response.data?.auth) {
+    if (response.data?.auth == "true") {
       setUser({ ...response.data });
     }
 

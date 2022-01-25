@@ -1,9 +1,9 @@
 import { Toast } from "primereact/toast";
 import React, { useEffect, useRef, useState } from "react";
-import ProgressBar from '../../components/React/ProgressBar';
 import { useAuth } from "../../contexts/AuthContext";
 import { Api } from "../../services/api";
-import { FloatingActions, ListPointScore, Main, Timing } from "./styles";
+import TimerComponent from "./components/Timer";
+import { FloatingActions, Main } from "./styles";
 
 const RegisterTime: React.FC = () => {
     let [progress, setProgress] = useState(0);
@@ -99,7 +99,7 @@ const RegisterTime: React.FC = () => {
         const response = await Api.post("/beatTime/" + user?.id)
         const data = response.data
 
-        if (data.score) {
+        if (data.Score == "true") {
             toast.current.show({
                 severity: "success",
                 summary: "Tudo certo!",
@@ -126,34 +126,12 @@ const RegisterTime: React.FC = () => {
     return (
         <Main>
             <Toast ref={toast} />
-
-            <p>{dayName[dateTime.getDay()] + ", " + dateTime.toLocaleDateString()}</p>
-            <Timing>
-                <ProgressBar
-                    progress={100}
-                    size={250}
-                    strokeWidth={12}
-                    circleOneStroke='#d9edfe'
-                    circleTwoStroke={color}
-                />
-                {/* <p>{`${hrs.toString().padStart(2, '0')}:${mins
-                    .toString()
-                    .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> */}
-                <p>{dateTime.toLocaleTimeString()}</p>
-
-            </Timing>
-            <FloatingActions>
-                <div>
+            <div>
+                <TimerComponent />
+                <FloatingActions>
                     <button type="button" onClick={handleClick}>Marcar ponto</button>
-                </div>
-            </FloatingActions>
-            <ListPointScore>
-                {
-                    pointScoreArray.map((value, index) => {
-                        return <li key={value}>{value}</li>
-                    })
-                }
-            </ListPointScore>
+                </FloatingActions>
+            </div>
         </Main>
     );
 }
