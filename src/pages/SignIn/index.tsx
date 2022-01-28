@@ -31,7 +31,7 @@ const SignIn = () => {
         toast.current.show({
           severity: "error",
           summary: "Falha na Autenticação",
-          detail: "Email ou Senha incorreta.",
+          detail: "Nome ou senha incorretos.",
           life: 3000,
         });
       }
@@ -41,7 +41,7 @@ const SignIn = () => {
       toast.current.show({
         severity: "error",
         summary: "Falha na Autenticação",
-        detail: "Email ou Senha incorreta.",
+        detail: "Nome ou senha incorretos.",
         life: 3000,
       });
     }
@@ -55,11 +55,11 @@ const SignIn = () => {
         <ContainerLogin>
           <HeaderLogin>
             <h1 className="font white-text suave active">
-              Cinemac
+              PH Motos
               <div className="divider white"></div>
             </h1>
             <p className="white-text suave condesed active">
-              O gerenciador de cinemas feito para você!
+              Sistema de pontos online
             </p>
           </HeaderLogin>
           <Login>
@@ -118,7 +118,7 @@ const FormikFormLogin = ({ onSubmit }: any) => {
       <div className="p-d-flex p-jc-center">
         <div className="card">
           <div className="loginHeader">
-            {/* <img src={Logo} alt="logo cinemac" /> */}
+            {/* <img src={LogoFundo} alt="logo ponto" /> */}
             <h3>LOGIN</h3>
           </div>
           <form onSubmit={formik.handleSubmit} className="p-fluid">

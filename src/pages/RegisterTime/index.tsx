@@ -103,16 +103,33 @@ const RegisterTime: React.FC = () => {
             toast.current.show({
                 severity: "success",
                 summary: "Tudo certo!",
-                detail: data.message,
+                detail: translator(data.message),
                 life: 3000,
             });
         } else {
             toast.current.show({
                 severity: "error",
                 summary: "Algo deu errado!",
-                detail: data.message,
+                detail: translator(data.message),
                 life: 3000,
             });
+        }
+    }
+
+    function translator(message:string){
+        switch(message){
+            case "Entry registered successfully":
+                return "Entrada registrada com sucesso!"
+            case "Successfully registered lunch outing":
+                return "Saída para almoço registrada com sucesso!"
+            case "Return from lunch registered successfully":
+                return "Retorno do almoço registrado com sucesso!"
+            case "Successfully registered exit":
+                return "Saída registrada com sucesso!"
+            case "You already registered all the hours":
+                return "Você já registrou todas as horas!"
+            default:
+                return message
         }
     }
 

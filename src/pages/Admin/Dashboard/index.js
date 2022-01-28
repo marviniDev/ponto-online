@@ -327,13 +327,13 @@ const TableComponent = ({ url }) => {
   const modalRegisterFooter = (
     <>
       <Button
-        label="Cancel"
+        label="Cancelar"
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDialog}
       />
       <Button
-        label="Save"
+        label="Salvar"
         icon="pi pi-check"
         className="p-button-text"
         onClick={saveFilme}
@@ -423,8 +423,8 @@ const TableComponent = ({ url }) => {
             exportable={false}
           ></Column> */}
           <Column
-            field="image"
-            header="Image"
+            field="image" 
+            header="Foto"
             body={imageBodyTemplate}
           ></Column>
           <Column field="name" header="Nome" sortable></Column>
@@ -441,7 +441,7 @@ const TableComponent = ({ url }) => {
       <Dialog
         visible={modalRegister}
         style={{ minWidth: "fit-content", minHeight: "fit-content" }}
-        header="Detalhes Filme"
+        header="Detalhes Usuário"
         modal
         className="p-fluid"
         footer={modalRegisterFooter}
@@ -509,6 +509,7 @@ const TableComponent = ({ url }) => {
               onChange={(e) => onInputChange(e, "password")}
               required
               autoFocus
+              toggleMask
               className={classNames({
                 "p-invalid": submitted && !movie.password,
               })}

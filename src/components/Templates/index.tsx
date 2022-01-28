@@ -45,7 +45,7 @@ const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
     <>
       <Container>
         <MenuLeft />
-        <MenuTop body={location.pathname}>oi</MenuTop>
+        <MenuTop body={"PH Motos"}>oi</MenuTop>
         <FlexContent>
           <Main>
             {children}

@@ -197,19 +197,19 @@ const Calendar: React.FC = () => {
                                     <div className="day-body">
                                         <div className="card sucess">
                                             <p >{converterHoras(array?.input)}</p>
-                                            <span>Entrada1</span>
+                                            <span>Entrada</span>
                                         </div>
                                         <div className="card failed">
                                             <p >{converterHoras(array?.out_lunch)}</p>
-                                            <span>Saida1</span>
+                                            <span>Saida p/ Almoço</span>
                                         </div>
                                         <div className="card sucess">
                                             <p >{converterHoras(array?.lunch_entree)}</p>
-                                            <span>Entrada2</span>
+                                            <span>Entrada do Almoço</span>
                                         </div>
                                         <div className="card failed">
                                             <p >{converterHoras(array?.exit)}</p>
-                                            <span>Saida2</span>
+                                            <span>Saida</span>
                                         </div>
                                     </div>
                                     <Button
@@ -249,13 +249,13 @@ const Calendar: React.FC = () => {
     const modalRequestFooter = (
         <>
             <Button
-                label="Cancel"
+                label="Cancelar"
                 icon="pi pi-times"
                 className="p-button-text"
                 onClick={hideDialog}
             />
             <Button
-                label="Save"
+                label="Salvar"
                 icon="pi pi-check"
                 className="p-button-text"
                 onClick={saveRequest}
@@ -285,7 +285,7 @@ const Calendar: React.FC = () => {
                 onHide={hideDialog}
             >
                 <div className="p-field">
-                    <label htmlFor="input">Entrada1</label>
+                    <label htmlFor="input">Entrada</label>
                     <InputText
                         id="input"
                         autoComplete="off"
@@ -299,11 +299,11 @@ const Calendar: React.FC = () => {
                         })}
                     />
                     {submitted && (
-                        <small className="p-error">Entrada1 é obrigatorio.</small>
+                        <small className="p-error">Entrada é obrigatório</small>
                     )}
                 </div>
                 <div className="p-field">
-                    <label htmlFor="out_lunch">Saida1</label>
+                    <label htmlFor="out_lunch">Saida p/ Almoço</label>
                     <InputText
                         id="out_lunch"
                         autoComplete="off"
@@ -317,11 +317,11 @@ const Calendar: React.FC = () => {
                         })}
                     />
                     {submitted && (
-                        <small className="p-error">Nome é obrigatorio.</small>
+                        <small className="p-error">Saida p/ Almoço é obrigatorio.</small>
                     )}
                 </div>
                 <div className="p-field">
-                    <label htmlFor="lunch_entree">Entrada2</label>
+                    <label htmlFor="lunch_entree">Entrada do Almoço</label>
                     <InputText
                         id="lunch_entree"
                         autoComplete="off"
@@ -334,12 +334,9 @@ const Calendar: React.FC = () => {
                             "p-invalid": submitted,
                         })}
                     />
-                    {submitted && (
-                        <small className="p-error">Nome é obrigatorio.</small>
-                    )}
                 </div>
                 <div className="p-field">
-                    <label htmlFor="exit">Saida2</label>
+                    <label htmlFor="exit">Saida</label>
                     <InputText
                         id="exit"
                         autoComplete="off"
@@ -352,9 +349,6 @@ const Calendar: React.FC = () => {
                             "p-invalid": submitted,
                         })}
                     />
-                    {submitted && (
-                        <small className="p-error">Nome é obrigatorio.</small>
-                    )}
                 </div>
                 <div className="p-field">
                     <label htmlFor="description">Descrição</label>
@@ -370,7 +364,7 @@ const Calendar: React.FC = () => {
                         })}
                     />
                     {submitted && (
-                        <small className="p-error">Nome é obrigatorio.</small>
+                        <small className="p-error">Descrição é obrigatorio.</small>
                     )}
                 </div>
             </Dialog>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import LogoFundo from "./../../images/LogoFundo.jpeg";
 
 export const SectionLogin = styled.section`
   min-height: 100vh;
@@ -24,7 +25,7 @@ export const MainLogin = styled.main`
   }
 
   ::after {
-    /* background-image: url(); */
+    background-image: url(${LogoFundo});); 
     background-position: center right;
     background-size: cover;
     z-index: 1;

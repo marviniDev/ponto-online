@@ -327,13 +327,13 @@ const TableComponent = ({ url }) => {
   const modalRegisterFooter = (
     <>
       <Button
-        label="Cancel"
+        label="Cancelar"
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDialog}
       />
       <Button
-        label="Save"
+        label="Salvar"
         icon="pi pi-check"
         className="p-button-text"
         onClick={saveFilme}
@@ -441,7 +441,7 @@ const TableComponent = ({ url }) => {
       <Dialog
         visible={modalRegister}
         style={{ minWidth: "fit-content", minHeight: "fit-content" }}
-        header="Detalhes Filme"
+        header="Detalhes Usuário"
         modal
         className="p-fluid"
         footer={modalRegisterFooter}

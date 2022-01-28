@@ -327,13 +327,13 @@ const TableComponent = ({ url }) => {
   const modalRegisterFooter = (
     <>
       <Button
-        label="Cancel"
+        label="Cancelar"
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDialog}
       />
       <Button
-        label="Save"
+        label="Salvar"
         icon="pi pi-check"
         className="p-button-text"
         onClick={saveFilme}
@@ -441,7 +441,7 @@ const TableComponent = ({ url }) => {
       <Dialog
         visible={modalRegister}
         style={{ minWidth: "fit-content", minHeight: "fit-content" }}
-        header="Detalhes Filme"
+        header="Detalhes Usuário"
         modal
         className="p-fluid"
         footer={modalRegisterFooter}
@@ -533,7 +533,7 @@ const TableComponent = ({ url }) => {
           <div className="p-field">
           <InputText
               id="hours"
-              type="number"
+              type="text"
               value={movie.hours ?? converter(movie.extras).textoHoras}
               onChange={(e) => onInputChange(e, "hours")}
               required
@@ -548,7 +548,7 @@ const TableComponent = ({ url }) => {
           <div className="p-field">
           <InputText
               id="minuts"
-              type="number"
+              type="text"
               value={movie.minuts ?? converter(movie.extras).textoMinutos}
               onChange={(e) => onInputChange(e, "minuts")}
               required
