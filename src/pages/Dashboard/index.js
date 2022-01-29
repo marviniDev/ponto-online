@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function DashboardAdmin() {
+
+function Dashboard() {
   return (
-    <>Dashboard</>
+    <>Dahsboard</>
   );
 }
 
-export default DashboardAdmin;
+export default Dashboard;

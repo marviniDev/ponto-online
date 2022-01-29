@@ -1,17 +1,17 @@
 import React, { ReactNode, useState } from "react";
 import { useLocation } from "react-router-dom";
 // import Loading from "../Loading";
-import { Calendar, Menu, Timer } from "../../assets/Icons";
-import MenuButton from "../React/Menus/MenuButton";
-import MenuLeft from "../React/Menus/MenuLeft";
-import MenuTop from "../React/Menus/MenuTop";
+import { Calendar, homeIcon, Menu, Timer } from "../../../assets/Icons";
+import MenuButton from "../../React/Menus/MenuButton";
+import MenuLeft from "../../React/Menus/MenuLeft";
+import MenuTop from "../../React/Menus/MenuTop";
 import { Container, FlexContent, Main } from "./style";
 
 export interface layoutProps {
   children: ReactNode
 }
 
-const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
+const LayoutUser: React.FC<layoutProps> = ({ children }): JSX.Element => {
   const [isMenuActive, setMenuActive] = useState(false);
   const location = useLocation()
 
@@ -20,9 +20,9 @@ const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
   }
   const menuTemplate = [
     {
-      icon: Calendar,
-      title: "Calendário",
-      link: "/calendar"
+      icon: homeIcon,
+      title: "Inicio",
+      link: "/dashboard",
     },
     {
       icon: Timer,
@@ -30,10 +30,9 @@ const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
       link: "/registerTime"
     },
     {
-      icon: Menu,
-      title: "Menu",
-      link: "",
-      onClick: click
+      icon: Calendar,
+      title: "Calendário",
+      link: "/calendar"
     }
   ]
 
@@ -57,4 +56,4 @@ const Layout: React.FC<layoutProps> = ({ children }): JSX.Element => {
   );
 }
 
-export default Layout;
+export default LayoutUser;

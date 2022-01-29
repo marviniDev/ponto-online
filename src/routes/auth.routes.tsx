@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
-import { layoutProps } from "../components/Templates";
+import { layoutProps } from "../components/Templates/LayoutUser";
 import { useAuth } from "../contexts/AuthContext";
 import Hierarchy from "../contexts/hierarchy";
 
@@ -29,7 +29,7 @@ const AuthRoutes: React.FC<AuthRoutesProps> = ({ component: Component, layout: L
     }
 
     if (!role && signed) {
-        if (user?.hierarchy != 1) {
+        if (user?.hierarchy !== 1) {
             return (
                 <Route
                     {...rest}
@@ -51,7 +51,7 @@ const AuthRoutes: React.FC<AuthRoutesProps> = ({ component: Component, layout: L
     }
 
     return (
-        user && user.hierarchy == 1 && role ? (
+        user && user.hierarchy === 1 && role ? (
             <Route
                 {...rest}
                 render={() =>

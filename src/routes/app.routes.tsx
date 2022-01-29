@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Layout from "../components/Templates";
+import LayoutUser from "../components/Templates/LayoutUser";
+import LayoutAdmin from "../components/Templates/LayoutAdmin";
 import Movie from "../pages/Admin/Users";
+import DashboardUser from "../pages/Dashboard";
+import DashboardAdmin from "../pages/Admin/Dashboard";
 import Calendar from "../pages/Calendar";
 import RegisterTime from "../pages/RegisterTime";
 import SignIn from "../pages/SignIn";
@@ -11,33 +14,47 @@ const AppRoutes = () => {
         <BrowserRouter>
             <Switch>
                 <PrivateRoutes
-                    layout={Layout}
+                    layout={LayoutUser}
+                    path="/dashboard"
+                    component={DashboardUser}
+                />
+                <PrivateRoutes
+                    layout={LayoutUser}
                     path="/registerTime"
                     component={RegisterTime}
                 />
                 <PrivateRoutes
-                    layout={Layout}
+                    layout={LayoutUser}
                     path="/calendar"
                     component={Calendar}
                 />
+                <Route path="/admin">
                 <PrivateRoutes
-                    layout={Layout}
-                    path="/admin"
+                    layout={LayoutAdmin}
+                    path="/admin/dashboard"
                     role="admin"
-                    component={Movie}
+                    component={DashboardAdmin}
                 />
                 <PrivateRoutes
-                    layout={Layout}
-                    path="admin/dashboarad"
+                    layout={LayoutAdmin}
+                    path="/admin/scores"
                     role="admin"
                     component={RegisterTime}
                 />
                 <PrivateRoutes
-                    layout={Layout}
-                    path="admin/users"
+                    layout={LayoutAdmin}
+                    path="/admin/requests"
                     role="admin"
-                    component={Calendar}
+                    component={RegisterTime}
                 />
+                <PrivateRoutes
+                    layout={LayoutAdmin}
+                    path="/admin/users"
+                    role="admin"
+                    component={Movie}
+                />
+                </Route>
+
                 <Route exact={true} path="/" component={SignIn} />
                 <Route exact={true} path="*" component={SignIn} />
             </Switch>

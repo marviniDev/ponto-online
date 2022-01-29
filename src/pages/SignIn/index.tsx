@@ -49,7 +49,7 @@ const SignIn = () => {
 
   return (
     <SectionLogin>
-      {signed && <Redirect to="/admin" />}
+      {signed && <Redirect to="/admin/dashboard" />}
       <Toast ref={toast} />
       <MainLogin>
         <ContainerLogin>

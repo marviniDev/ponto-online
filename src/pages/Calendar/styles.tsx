@@ -93,7 +93,6 @@ export const Main = styled.ul`
 
         .day-body{
             display: flex;
-            flex-direction: column;
             gap: 1em;
 
             .card{
@@ -102,18 +101,17 @@ export const Main = styled.ul`
                 justify-content: center;
                 align-items: center;
                 font-weight: bold;
-                padding-left: .3em;
+                border-radius: 0.3em;
+                padding: 2em;
+                color: #fff;
             }
 
             .card.sucess {
-                border-radius: 0.3em;
-                border-left: 5px solid #0db868;
-
+                background-color:#0db868;
             }
 
             .card.failed {
-                border-radius: 0.3em;
-                border-left: 5px solid #e25252;
+                background-color: #e25252;
             }
         }
     }

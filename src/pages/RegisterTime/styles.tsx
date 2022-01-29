@@ -21,7 +21,6 @@ p{
 `
 export const FloatingActions = styled.div`
     display: flex;
-    margin-top: 3em;
 
     button{
     padding: 1em;
